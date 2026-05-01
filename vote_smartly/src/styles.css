@@ -1,0 +1,310 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * The Voting Oracle — design system
+ * Apple + Google AI Studio aesthetic.
+ * All colors are oklch. Use semantic tokens only.
+ */
+
+@theme inline {
+  --font-sans:
+    "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+  --font-display:
+    "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px); /* squircle ~24px */
+  --radius-3xl: calc(var(--radius) + 22px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-saffron: var(--saffron);
+  --color-india-green: var(--india-green);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+
+  --shadow-soft: 0 1px 2px oklch(0.2 0.02 260 / 0.04),
+    0 8px 24px -6px oklch(0.2 0.02 260 / 0.08);
+  --shadow-elevated: 0 4px 12px oklch(0.2 0.02 260 / 0.06),
+    0 24px 48px -12px oklch(0.2 0.02 260 / 0.18);
+  --shadow-glow: 0 0 0 1px oklch(0.55 0.18 258 / 0.18),
+    0 12px 32px -8px oklch(0.55 0.18 258 / 0.35);
+
+  --gradient-bg:
+    radial-gradient(
+        1200px 600px at 10% 0%,
+        oklch(0.96 0.04 258 / 0.7),
+        transparent 60%
+      ),
+    radial-gradient(
+        900px 500px at 90% 10%,
+        oklch(0.94 0.06 290 / 0.55),
+        transparent 60%
+      ),
+    radial-gradient(
+        1000px 700px at 50% 100%,
+        oklch(0.96 0.05 80 / 0.5),
+        transparent 60%
+      ),
+    linear-gradient(180deg, #fbfbfd 0%, #f0f4f8 100%);
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-glow) 100%
+  );
+  --gradient-tricolor: linear-gradient(
+    135deg,
+    var(--saffron) 0%,
+    oklch(1 0 0) 50%,
+    var(--india-green) 100%
+  );
+}
+
+:root {
+  --radius: 1rem; /* 16px → 24px+ for 2xl/3xl squircles */
+
+  --background: oklch(0.99 0.005 260);
+  --foreground: oklch(0.18 0.02 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 260);
+
+  /* Google Blue #1A73E8 */
+  --primary: oklch(0.58 0.19 258);
+  --primary-foreground: oklch(0.99 0.005 260);
+  --primary-glow: oklch(0.7 0.18 270);
+
+  --secondary: oklch(0.96 0.01 260);
+  --secondary-foreground: oklch(0.18 0.02 260);
+
+  --muted: oklch(0.96 0.01 260);
+  --muted-foreground: oklch(0.48 0.02 260);
+
+  --accent: oklch(0.93 0.05 258);
+  --accent-foreground: oklch(0.25 0.1 258);
+
+  --saffron: oklch(0.78 0.17 60);
+  --india-green: oklch(0.62 0.15 150);
+
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.99 0.005 260);
+
+  --border: oklch(0.9 0.01 260);
+  --input: oklch(0.92 0.01 260);
+  --ring: oklch(0.58 0.19 258);
+
+  --glass: oklch(1 0 0 / 0.65);
+  --glass-border: oklch(1 0 0 / 0.55);
+
+  --chart-1: oklch(0.58 0.19 258);
+  --chart-2: oklch(0.7 0.18 270);
+  --chart-3: oklch(0.78 0.17 60);
+  --chart-4: oklch(0.62 0.15 150);
+  --chart-5: oklch(0.55 0.2 320);
+
+  --sidebar: oklch(0.98 0.005 260);
+  --sidebar-foreground: oklch(0.18 0.02 260);
+  --sidebar-primary: oklch(0.58 0.19 258);
+  --sidebar-primary-foreground: oklch(0.99 0.005 260);
+  --sidebar-accent: oklch(0.96 0.01 260);
+  --sidebar-accent-foreground: oklch(0.18 0.02 260);
+  --sidebar-border: oklch(0.9 0.01 260);
+  --sidebar-ring: oklch(0.58 0.19 258);
+}
+
+.dark {
+  --background: oklch(0.16 0.02 260);
+  --foreground: oklch(0.97 0.01 260);
+  --card: oklch(0.22 0.02 260);
+  --card-foreground: oklch(0.97 0.01 260);
+  --popover: oklch(0.22 0.02 260);
+  --popover-foreground: oklch(0.97 0.01 260);
+
+  --primary: oklch(0.7 0.18 258);
+  --primary-foreground: oklch(0.16 0.02 260);
+  --primary-glow: oklch(0.78 0.16 280);
+
+  --secondary: oklch(0.27 0.02 260);
+  --secondary-foreground: oklch(0.97 0.01 260);
+  --muted: oklch(0.27 0.02 260);
+  --muted-foreground: oklch(0.7 0.02 260);
+  --accent: oklch(0.32 0.06 258);
+  --accent-foreground: oklch(0.95 0.02 260);
+
+  --saffron: oklch(0.78 0.17 60);
+  --india-green: oklch(0.7 0.16 150);
+
+  --destructive: oklch(0.7 0.19 22);
+  --destructive-foreground: oklch(0.97 0.01 260);
+
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: oklch(0.7 0.18 258);
+
+  --glass: oklch(0.22 0.02 260 / 0.6);
+  --glass-border: oklch(1 0 0 / 0.1);
+}
+
+/* High contrast mode (a11y) */
+.contrast-high {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.05 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.05 0 0);
+  --primary: oklch(0.42 0.24 258);
+  --primary-foreground: oklch(1 0 0);
+  --muted-foreground: oklch(0.18 0 0);
+  --border: oklch(0.2 0 0);
+  --glass: oklch(1 0 0 / 0.95);
+  --glass-border: oklch(0.2 0 0);
+}
+.contrast-high.dark {
+  --background: oklch(0.05 0 0);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.1 0 0);
+  --card-foreground: oklch(1 0 0);
+  --primary: oklch(0.85 0.18 258);
+  --primary-foreground: oklch(0.05 0 0);
+  --muted-foreground: oklch(0.92 0 0);
+  --border: oklch(0.85 0 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  body {
+    color: var(--color-foreground);
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    font-weight: 600;
+  }
+
+  ::selection {
+    background: oklch(0.58 0.19 258 / 0.2);
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--color-glass);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid var(--color-glass-border);
+  }
+
+  .luminescent {
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 0.6),
+      0 1px 2px oklch(0.2 0.02 260 / 0.04),
+      0 8px 24px -6px oklch(0.2 0.02 260 / 0.1);
+  }
+
+  .squircle {
+    border-radius: 1.5rem; /* 24px */
+  }
+
+  .breathing-glow {
+    animation: breathing 3.2s ease-in-out infinite;
+  }
+
+  .gemini-pulse {
+    background: conic-gradient(
+      from 0deg,
+      oklch(0.58 0.19 258),
+      oklch(0.7 0.18 290),
+      oklch(0.78 0.17 60),
+      oklch(0.62 0.15 150),
+      oklch(0.58 0.19 258)
+    );
+    animation: spin 4s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .focusable:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: 0.75rem;
+  }
+}
+
+@keyframes breathing {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 oklch(0.58 0.19 258 / 0.5),
+      0 0 24px 4px oklch(0.58 0.19 258 / 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 10px oklch(0.58 0.19 258 / 0),
+      0 0 36px 8px oklch(0.58 0.19 258 / 0.45);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
